@@ -50,6 +50,7 @@ var removeMin = function() {
   arr[0] = arr[size-1];
   arr[size-1] = null;
   heapifyDown();
+  console.log("removed element",temp)
   console.log(arr)
 };
 
