@@ -67,3 +67,4 @@ tree1.addNode(new Node(2));
 tree1.addNode(new Node(3));
 tree1.addNode(new Node(4));
 tree1.addNode(new Node(5));
+tree1.postorderIterative(root);
