@@ -1,0 +1,70 @@
+var Node = function(val,left,right) {
+  this.value = val;
+  this.left = left || null; this.right = right || null; 
+};
+
+function BTree(root) {
+  this.root = null;
+};
+var root = null;
+BTree.prototype.addNode = function(node) {
+  root = this.root;
+  if (!this.root) {
+    this.root = node;
+    return;
+  }
+  var currentNode = this.root;
+  //console.log(currentNode,node);
+  while(currentNode) {
+   // console.log(currentNode.value,node.value);
+    if(node.value < currentNode.value) {
+      if(!currentNode.left) {
+        currentNode.left = node;
+        //console.log("Left",currentNode);
+        break;
+      } else {
+        currentNode = currentNode.left;
+      }  
+      
+    } else {
+      
+      if(!currentNode.right) {
+        currentNode.right = node;
+        break;
+      } else {
+        //console.log (currentNode);
+        currentNode = currentNode.right;
+         //console.log("Right",currentNode);
+      }
+    }
+  }
+  
+}
+
+
+let tree1 = new BTree();
+tree1.addNode(new Node(8));
+tree1.addNode(new Node(3));
+tree1.addNode(new Node(10));
+tree1.addNode(new Node(1));
+tree1.addNode(new Node(6));
+tree1.addNode(new Node(14));
+tree1.addNode(new Node(13));
+let pathArr = [];
+let path = ""
+let pathIdx = 0;
+ BTree.prototype.printPaths = function(root) {
+  if(root==null) {
+    return false;
+  }
+    path = path + root.value;
+    
+  if(root.left==null && root.right==null ) {
+    pathArr.push(path);
+    console.log(pathArr)
+  } else {
+   tree1.printPaths(root.left);
+   tree1.printPaths(root.right);
+  }
+}
+tree1.printPaths(root);
